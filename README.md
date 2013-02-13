@@ -1,4 +1,4 @@
 MageInstall.sh
 ==============
 
-Magento Installation Script. Shell script that simplifies the process Magento installation process and configuration.
+Magento Installation Script. Shell script that simplifies the Magento installation process and configuration.
