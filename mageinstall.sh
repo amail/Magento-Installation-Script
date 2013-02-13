@@ -168,7 +168,6 @@ chmod -R o+w $WWW_PATH/media $WWW_PATH/var > /dev/null
 chmod o+w $WWW_PATH/app/etc > /dev/null
 rm -rf $WWW_PATH/downloader/pearlib/cache/* $WWW_PATH/downloader/pearlib/download/* > /dev/null
 
-
 # Create the database if it doesn't exist
 echo "* Dropping/Creating database $DB_NAME..."
 mysql -u$DB_USER -p$DB_PASS -e "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;"
