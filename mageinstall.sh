@@ -2,7 +2,8 @@
 
 # Default
 SHOW_HELP=0
-CONFIG_FILE_PATH="./mageinstall-conf.sh"
+CONFIG_FILE_PATH="./mageinstall.conf"
+VALIDATION_MESSAGE=""
 
 # Read command line options
 index=0
@@ -30,25 +31,26 @@ do
     index=`expr $index + 1`
     value=${arguments[`expr $index`]}
     case $argument in
+        # Options
         # General
-        --name) NAME=$value;;
-        --force) FORCE_INSTALL=1;;
+        -n | --name) NAME=$value;;
+        -f | --force) FORCE_INSTALL=1;;
         # Web
-        --www-path) WWW_PATH=$value;;
-        --www-url) WWW_URL=$value;;
+        -w | --www-path) WWW_PATH=$value;;
+        -U |--www-url) WWW_URL=$value;;
         # Database
-        --db-name) DB_NAME=$value;;
-        --db-user) DB_USER=$value;;
-        --db-host) DB_HOST=$value;;
-        --db-pass) DB_PASS=$value;;
+        -N |--db-name) DB_NAME=$value;;
+        -H | --db-host) DB_HOST=$value;;
+        -U |--db-user) DB_USER=$value;;
+        -P | --db-pass) DB_PASS=$value;;
         # Magento
-        --mag-version | --version) MAG_VERSION=$value;;
-        --mag-dev-mode) MAG_DEVELOPER_MODE=$value;;
-        --mag-firstname) MAG_FIRSTNAME=$value;;
-        --mag-surname) MAG_SURNAME=$value;;
-        --mag-email) MAG_EMAIL=$value;;
-        --mag-user) MAG_USER=$value;;
-        --mag-pass) MAG_PASS=$value;;
+        -v | --mag-version | --version) MAG_VERSION=$value;;
+        -d | --mag-dev-mode) MAG_DEVELOPER_MODE=$value;;
+        -F | --mag-firstname) MAG_FIRSTNAME=$value;;
+        -S | --mag-surname) MAG_SURNAME=$value;;
+        -e | --mag-email) MAG_EMAIL=$value;;
+        -u | --mag-user) MAG_USER=$value;;
+        -p | --mag-pass) MAG_PASS=$value;;
         # Actions
         --stable-versions)
             echo "* Downloading list of stable versions..."
@@ -62,6 +64,69 @@ do
         -h | --help) SHOW_HELP=1;;
     esac
 done
+
+# Validate parameters
+
+# General
+if [[ -z $NAME ]]; then
+    VALIDATION_MESSAGE="Configuration 'NAME' cannot be empty"
+fi
+
+if [[ -z $WWW_PATH ]]; then
+    VALIDATION_MESSAGE="Configuration 'WWW_PATH' cannot be empty"
+fi
+
+# Database
+if [[ -z $DB_NAME ]]; then
+    VALIDATION_MESSAGE="Configuration 'DB_NAME' cannot be empty"
+fi
+
+if [[ -z $DB_HOST ]]; then
+    VALIDATION_MESSAGE="Configuration 'DB_HOST' cannot be empty"
+fi
+
+if [[ -z $DB_USER ]]; then
+    VALIDATION_MESSAGE="Configuration 'DB_USER' cannot be empty"
+fi
+
+if [[ -z $DB_PASS ]]; then
+    VALIDATION_MESSAGE="Configuration 'DB_PASS' cannot be empty"
+fi
+
+# Magento
+if [[ -z $MAG_VERSION ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_VERSION' cannot be empty"
+fi
+
+if [[ -z $MAG_DEVELOPER_MODE ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_DEVELOPER_MODE' cannot be empty"
+fi
+
+if [[ -z $MAG_FIRSTNAME ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_FIRSTNAME' cannot be empty"
+fi
+
+if [[ -z $MAG_SURNAME ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_SURNAME' cannot be empty"
+fi
+
+if [[ -z $MAG_EMAIL ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_EMAIL' cannot be empty"
+fi
+
+if [[ -z $MAG_USER ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_USER' cannot be empty"
+fi
+
+if [[ -z $MAG_PASS ]]; then
+    VALIDATION_MESSAGE="Configuration 'MAG_PASS' cannot be empty"
+fi
+
+# Print message if present
+if [[ ! -z $VALIDATION_MESSAGE ]]; then
+    echo "! $VALIDATION_MESSAGE"
+    exit
+fi
 
 # Setup directories and paths
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -210,4 +275,5 @@ Mage::setIsDeveloperMode(true);
 ' -e '1,$s/A/a/' $WWW_PATH/index.php
 fi
 
+# Master, we did okay. We did okay...
 echo "* Installation successfully completed. Access site at: $WWW_URL"
