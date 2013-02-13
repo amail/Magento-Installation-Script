@@ -7,6 +7,8 @@ Magento Installation Script. Shell script that simplifies the Magento installati
 
     ./mageinstall [[config file path]] [--[command] [value]]
 
+*If no configuration path is provided, './mageinstall-conf.sh' is assumed.*
+
   Commands
 
     --stable-versions      Get a list of all stable Magento versions
