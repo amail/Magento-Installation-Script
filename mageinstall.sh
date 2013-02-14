@@ -1,6 +1,15 @@
 #!/bin/bash
 
-# Default
+# MageInstall.sh
+# Shell script that simplifies the Magento installation process and configuration.
+# Created by Robin Orheden <orhedenr@gmail.com> 2013
+
+# MIT License
+# Copyright (C) 2013 Robin Orheden
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 SHOW_HELP=0
 CONFIG_FILE_PATH="./mageinstall.conf"
 VALIDATION_MESSAGE=""
@@ -141,26 +150,29 @@ DB_NAME=${DB_NAME/\%name\%/$NAME}
 
 # Show help!
 if [ $SHOW_HELP == 1 ]; then
-     echo "To run, use:
-     ./mageinstall [ configuration file path ]
-
-     Options:
-     ./mageinstall -n, --name            Name of the instance that you want to install
-     ./mageinstall -f, --force           Run without user approval
-     ./mageinstall -w, --www-path        Path where the WWW-files will be copied
-     ./mageinstall -W, --www-url         Absolute URL to where the site will be accessible
-     ./mageinstall -N, --db-name         Database name
-     ./mageinstall -H, --db-host         Database host
-     ./mageinstall -U, --db-user         Database username
-     ./mageinstall -P, --db-pass         Database password
-     ./mageinstall -e, --mag-email       Magento admin email
-     ./mageinstall -u, --mag-user        Magento admin username
-     ./mageinstall -p, --mag-pass        Magento admin password
-     ./mageinstall -v, --mag-version     Magento version to install
-     ./mageinstall -d, --mag-dev-mode    Enables the Magento developer mode in the installation
-     ./mageinstall -F, --mag-firstname   Magento admin first name
-     ./mageinstall -S, --mag-surname     Magento admin surname"
-     exit
+    echo "To run, use:"
+    echo "./mageinstall.sh [[config file path]] [[option] [value]]"
+    echo ""
+    echo "Commands:"
+    echo "--stable-versions     Get a list of all stable Magento versions"
+    echo ""
+    echo "Options:"
+    echo "-n, --name            Name of the instance that you want to install"
+    echo "-f, --force           Run without user approval"
+    echo "-w, --www-path        Path where the WWW-files will be copied"
+    echo "-W, --www-url         Absolute URL to where the site will be accessible"
+    echo "-N, --db-name         Database name"
+    echo "-H, --db-host         Database host"
+    echo "-U, --db-user         Database username"
+    echo "-P, --db-pass         Database password"
+    echo "-e, --mag-email       Magento admin email"
+    echo "-u, --mag-user        Magento admin username"
+    echo "-p, --mag-pass        Magento admin password"
+    echo "-v, --mag-version     Magento version to install"
+    echo "-d, --mag-dev-mode    Enables the Magento developer mode in the installation"
+    echo "-F, --mag-firstname   Magento admin first name"
+    echo "-S, --mag-surname     Magento admin surname"
+    exit
 fi
 
 # Verify that the user is aware of the possible consequences of the install
