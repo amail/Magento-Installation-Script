@@ -7,7 +7,7 @@ Magento Installation Script. Shell script that simplifies the Magento installati
 
     ./mageinstall [[config file path]] [[option] [value]]
 
-*If no configuration path is provided, './mageinstall-conf.sh' is assumed.*
+*If no configuration path is provided, './mageinstall.conf' is assumed.*
 
   Commands
 
@@ -15,21 +15,21 @@ Magento Installation Script. Shell script that simplifies the Magento installati
 
   Options
   
-    --name             Name of the instance that you want to install
-    --force            Run without user approval
-    --www-path         Path where the WWW-files will be copied
-    --www-url          Absolute URL to where the site will be accessible
-    --db-name          Database name
-    --db-host          Database host
-    --db-user          Database username
-    --db-pass          Database password
-    --mag-email        Magento admin email
-    --mag-user         Magento admin username
-    --mag-pass         Magento admin password
-    --mag-version      Magento version to install
-    --mag-dev-mode     Enables the Magento developer mode in the installation
-    --mag-firstname    Magento admin first name
-    --mag-surname      Magento admin surname
+    -n, --name             Name of the instance that you want to install
+    -f, --force            Run without user approval
+    -w, --www-path         Path where the WWW-files will be copied
+    -W, --www-url          Absolute URL to where the site will be accessible
+    -N, --db-name          Database name
+    -H, --db-host          Database host
+    -U, --db-user          Database username
+    -P, --db-pass          Database password
+    -e, --mag-email        Magento admin email
+    -u, --mag-user         Magento admin username
+    -p, --mag-pass         Magento admin password
+    -v, --mag-version      Magento version to install
+    -d, --mag-dev-mode     Enables the Magento developer mode in the installation
+    -F, --mag-firstname    Magento admin first name
+    -S, --mag-surname      Magento admin surname
 
     -h, --help         Output usage information
 
