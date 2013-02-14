@@ -31,7 +31,7 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     -F, --mag-firstname    Magento admin first name
     -S, --mag-surname      Magento admin surname
 
-    -h, --help         Output usage information
+    -h, --help             Output usage information
 
   License (MIT)
     

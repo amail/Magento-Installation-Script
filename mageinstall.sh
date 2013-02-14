@@ -37,7 +37,7 @@ do
         -f | --force) FORCE_INSTALL=1;;
         # Web
         -w | --www-path) WWW_PATH=$value;;
-        -U |--www-url) WWW_URL=$value;;
+        -W |--www-url) WWW_URL=$value;;
         # Database
         -N |--db-name) DB_NAME=$value;;
         -H | --db-host) DB_HOST=$value;;
@@ -145,21 +145,21 @@ if [ $SHOW_HELP == 1 ]; then
      ./mageinstall [ configuration file path ]
 
      Options:
-     ./mageinstall --name            Name of the instance that you want to install
-     ./mageinstall --force           Run without user approval
-     ./mageinstall --www-path        Path where the WWW-files will be copied
-     ./mageinstall --www-url         Absolute URL to where the site will be accessible
-     ./mageinstall --db-name         Database name
-     ./mageinstall --db-host         Database host
-     ./mageinstall --db-user         Database username
-     ./mageinstall --db-pass         Database password
-     ./mageinstall --mag-email       Magento admin email
-     ./mageinstall --mag-user        Magento admin username
-     ./mageinstall --mag-pass        Magento admin password
-     ./mageinstall --mag-version     Magento version to install
-     ./mageinstall --mag-dev-mode    Enables the Magento developer mode in the installation
-     ./mageinstall --mag-firstname   Magento admin first name
-     ./mageinstall --mag-surname     Magento admin surname"
+     ./mageinstall -n, --name            Name of the instance that you want to install
+     ./mageinstall -f, --force           Run without user approval
+     ./mageinstall -w, --www-path        Path where the WWW-files will be copied
+     ./mageinstall -W, --www-url         Absolute URL to where the site will be accessible
+     ./mageinstall -N, --db-name         Database name
+     ./mageinstall -H, --db-host         Database host
+     ./mageinstall -U, --db-user         Database username
+     ./mageinstall -P, --db-pass         Database password
+     ./mageinstall -e, --mag-email       Magento admin email
+     ./mageinstall -u, --mag-user        Magento admin username
+     ./mageinstall -p, --mag-pass        Magento admin password
+     ./mageinstall -v, --mag-version     Magento version to install
+     ./mageinstall -d, --mag-dev-mode    Enables the Magento developer mode in the installation
+     ./mageinstall -F, --mag-firstname   Magento admin first name
+     ./mageinstall -S, --mag-surname     Magento admin surname"
      exit
 fi
 
