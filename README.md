@@ -32,6 +32,20 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     -F, --mag-firstname    Magento admin first name
     -S, --mag-surname      Magento admin surname
 
+  Example) Download version 1.7.0.2 into ~/www/1702dev/
+  
+    $ sudo ./mageinstall.sh --v 1.7.0.2 --name 1702dev --www-path ~/www/%name%/
+    IMPORTANT: This installation will:
+    * Remove all files under the directory '~/www/1702dev/'.
+    * Drop/create the database 'magento_deploy_1702dev'.
+    Are you really sure that you want to continue y/n [n]? y
+    
+    * Downloading Magento version 1.7.0.2 (magento-1.7.0.2.tar.gz)...
+    * Unpacking and preparing to install Magento to directory ~/www/1702dev/...
+    * Dropping/Creating database magento_deploy_1702dev...
+    * Installing Magento...
+    * Installation successfully completed. Access site at: http://localhost/1702dev/
+
   License (MIT)
     
     Copyright (C) 2013 Robin Orheden
