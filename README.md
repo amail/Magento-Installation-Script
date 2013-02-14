@@ -5,7 +5,7 @@ Magento Installation Script. Shell script that simplifies the Magento installati
 
   Usage
 
-    ./mageinstall [[config file path]] [[option] [value]]
+    ./mageinstall.sh [[config file path]] [[option] [value]]
 
 *If no configuration path is provided, './mageinstall.conf' is assumed.*
 
@@ -30,7 +30,6 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     -d, --mag-dev-mode     Enables the Magento developer mode in the installation
     -F, --mag-firstname    Magento admin first name
     -S, --mag-surname      Magento admin surname
-
     -h, --help             Output usage information
 
   License (MIT)
