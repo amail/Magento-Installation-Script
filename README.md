@@ -12,6 +12,7 @@ Magento Installation Script. Shell script that simplifies the Magento installati
   Commands
 
     --stable-versions      Get a list of all stable Magento versions
+    -h, --help             Output usage information
 
   Options
   
@@ -30,7 +31,6 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     -d, --mag-dev-mode     Enables the Magento developer mode in the installation
     -F, --mag-firstname    Magento admin first name
     -S, --mag-surname      Magento admin surname
-    -h, --help             Output usage information
 
   License (MIT)
     
