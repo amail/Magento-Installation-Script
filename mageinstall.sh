@@ -74,6 +74,33 @@ do
     esac
 done
 
+# Show help!
+if [ $SHOW_HELP == 1 ]; then
+    echo "To run, use:"
+    echo "./mageinstall.sh [[config file path]] [[option] [value]]"
+    echo ""
+    echo "Commands:"
+    echo "--stable-versions     Get a list of all stable Magento versions"
+    echo ""
+    echo "Options:"
+    echo "-n, --name            Name of the instance that you want to install"
+    echo "-f, --force           Run without user approval"
+    echo "-w, --www-path        Path where the WWW-files will be copied"
+    echo "-W, --www-url         Absolute URL to where the site will be accessible"
+    echo "-N, --db-name         Database name"
+    echo "-H, --db-host         Database host"
+    echo "-U, --db-user         Database username"
+    echo "-P, --db-pass         Database password"
+    echo "-e, --mag-email       Magento admin email"
+    echo "-u, --mag-user        Magento admin username"
+    echo "-p, --mag-pass        Magento admin password"
+    echo "-v, --mag-version     Magento version to install"
+    echo "-d, --mag-dev-mode    Enables the Magento developer mode in the installation"
+    echo "-F, --mag-firstname   Magento admin first name"
+    echo "-S, --mag-surname     Magento admin surname"
+    exit
+fi
+
 # Validate parameters
 
 # General
@@ -147,33 +174,6 @@ mkdir -p $CACHE_DIR/
 WWW_PATH=${WWW_PATH/\%name\%/$NAME}
 WWW_URL=${WWW_URL/\%name\%/$NAME}
 DB_NAME=${DB_NAME/\%name\%/$NAME}
-
-# Show help!
-if [ $SHOW_HELP == 1 ]; then
-    echo "To run, use:"
-    echo "./mageinstall.sh [[config file path]] [[option] [value]]"
-    echo ""
-    echo "Commands:"
-    echo "--stable-versions     Get a list of all stable Magento versions"
-    echo ""
-    echo "Options:"
-    echo "-n, --name            Name of the instance that you want to install"
-    echo "-f, --force           Run without user approval"
-    echo "-w, --www-path        Path where the WWW-files will be copied"
-    echo "-W, --www-url         Absolute URL to where the site will be accessible"
-    echo "-N, --db-name         Database name"
-    echo "-H, --db-host         Database host"
-    echo "-U, --db-user         Database username"
-    echo "-P, --db-pass         Database password"
-    echo "-e, --mag-email       Magento admin email"
-    echo "-u, --mag-user        Magento admin username"
-    echo "-p, --mag-pass        Magento admin password"
-    echo "-v, --mag-version     Magento version to install"
-    echo "-d, --mag-dev-mode    Enables the Magento developer mode in the installation"
-    echo "-F, --mag-firstname   Magento admin first name"
-    echo "-S, --mag-surname     Magento admin surname"
-    exit
-fi
 
 # Verify that the user is aware of the possible consequences of the install
 if [ $FORCE_INSTALL == 0 ]; then
