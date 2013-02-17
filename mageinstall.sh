@@ -246,11 +246,12 @@ chmod o+w $WWW_PATH/app/etc > /dev/null
 rm -rf $WWW_PATH/downloader/pearlib/cache/* $WWW_PATH/downloader/pearlib/download/* > /dev/null
 
 # Create the database if it doesn't exist
-echo "* Dropping/Creating database $DB_NAME..."
+echo "* Recreating database $DB_NAME..."
 mysql -u$DB_USER -p$DB_PASS -e "DROP DATABASE IF EXISTS $DB_NAME; CREATE DATABASE $DB_NAME;"
 
-# Run installer
 cd $WWW_PATH
+
+# Run installer
 echo "* Installing Magento..."
 installation_result=`php -f install.php -- \
     --license_agreement_accepted "yes" \
@@ -272,6 +273,21 @@ installation_result=`php -f install.php -- \
     --admin_email "$MAG_EMAIL" \
     --admin_username "$MAG_USER" \
     --admin_password "$MAG_PASS"` > /dev/null
+
+# Check whether the Mage CLI is present. Should be for versions >=1.5
+if [ -f ./mage ]; then
+    chmod +x ./mage > /dev/null
+    ./mage mage-setup > /dev/null
+
+    # Check whether there are extensions to install
+    if [ ${#MAG_EXTENSIONS[@]} > 0 ]; then
+        for extension_name in "${MAG_EXTENSIONS[@]}"
+        do
+            echo "* Installing extension $extension_name..."
+            ./mage install community $extension_name > /dev/null
+        done
+    fi
+fi
 
 # Check that the installation was successful
 if [[ "$installation_result" != *SUCCESS* ]]
