@@ -273,7 +273,7 @@ installation_result=`php -f install.php -- \
     --db_user "$DB_USER" \
     --db_pass "$DB_PASS" \
     --url "$WWW_URL" \
-    --use_rewrites "yes" \
+    --use_rewrites "no" \
     --use_secure "no" \
     --secure_base_url "" \
     --use_secure_admin "no" \
