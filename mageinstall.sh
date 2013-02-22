@@ -68,7 +68,7 @@ do
             do
                 MAG_EXTENSIONS[$i]=$item
                 ((i++))
-            done
+            done;;
         # Actions
         --stable-versions)
             echo "* Downloading list of stable versions..."
