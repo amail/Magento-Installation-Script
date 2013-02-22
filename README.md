@@ -49,18 +49,18 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     
   Example) Download version 1.7.0.2 and install it with extension Comfirm_AlphaMail
     
-    $ sudo ./mageinstall.sh -v 1.7.0.2 -n testinstall -x Comfirm_AlphaMail
+    $ sudo ./mageinstall.sh -v 1.7.0.2 -n alphamail -x Comfirm_AlphaMail
     IMPORTANT: This installation will:
-    * Remove all files under the directory '/var/www/magento_testinstall'.
-    * Drop/create the database 'magento_deploy_testinstall'.
+    * Remove all files under the directory '/var/www/magento_alphamail'.
+    * Drop/create the database 'magento_deploy_alphamail'.
     Are you really sure that you want to continue y/n [n]? y
     
     * Downloading Magento version 1.7.0.2 (magento-1.7.0.2.tar.gz)...
-    * Unpacking and preparing to install Magento to directory /var/www/magento_testinstall/...
-    * Recreating database magento_deploy_testinstall...
+    * Unpacking and preparing to install Magento to directory /var/www/magento_alphamail/...
+    * Recreating database magento_deploy_alphamail...
     * Installing Magento...
     * Installing extension Comfirm_AlphaMail...
-    * Installation successfully completed. Access site at: http://localhost/magento_testinstall/
+    * Installation successfully completed. Access site at: http://localhost/magento_alphamail/
 
   License (MIT)
     
