@@ -31,6 +31,7 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     -d, --mag-dev-mode     Enables the Magento developer mode in the installation
     -F, --mag-firstname    Magento admin first name
     -S, --mag-surname      Magento admin surname
+    -x, --mag-extensions   Comma-separated list with Magento extensions to install
 
   Example) Download version 1.7.0.2 into ~/www/1702dev/
   

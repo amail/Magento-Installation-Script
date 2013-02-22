@@ -60,6 +60,15 @@ do
         -e | --mag-email) MAG_EMAIL=$value;;
         -u | --mag-user) MAG_USER=$value;;
         -p | --mag-pass) MAG_PASS=$value;;
+        -x | --mag-extensions)
+            IFS=","
+            set $value
+            i=0
+            for item
+            do
+                MAG_EXTENSIONS[$i]=$item
+                ((i++))
+            done
         # Actions
         --stable-versions)
             echo "* Downloading list of stable versions..."
@@ -98,6 +107,7 @@ if [ $SHOW_HELP == 1 ]; then
     echo "-d, --mag-dev-mode    Enables the Magento developer mode in the installation"
     echo "-F, --mag-firstname   Magento admin first name"
     echo "-S, --mag-surname     Magento admin surname"
+    echo "-x, --mag-extensions  Comma-separated list with Magento extensions to install"
     exit
 fi
 
@@ -300,7 +310,7 @@ fi
 if [ $MAG_DEVELOPER_MODE == 1 ]; then
     sed -i -e '/Mage::run/i\
 Mage::setIsDeveloperMode(true);
-' -e '1,$s/A/a/' $WWW_PATH/index.php
+' -e '1,$s//Mage::run/' $WWW_PATH/index.php
 fi
 
 # Master, we did okay. We did okay...
