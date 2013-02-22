@@ -35,7 +35,7 @@ Magento Installation Script. Shell script that simplifies the Magento installati
 
   Example) Download version 1.7.0.2 into ~/www/1702dev/
   
-    $ sudo ./mageinstall.sh --v 1.7.0.2 --name 1702dev --www-path ~/www/%name%/
+    $ sudo ./mageinstall.sh -v 1.7.0.2 --name 1702dev --www-path ~/www/%name%/
     IMPORTANT: This installation will:
     * Remove all files under the directory '~/www/1702dev/'.
     * Drop/create the database 'magento_deploy_1702dev'.
@@ -46,6 +46,21 @@ Magento Installation Script. Shell script that simplifies the Magento installati
     * Dropping/Creating database magento_deploy_1702dev...
     * Installing Magento...
     * Installation successfully completed. Access site at: http://localhost/1702dev/
+    
+  Example) Download version 1.7.0.2 and install it with extension Comfirm_AlphaMail
+    
+    $ sudo ./mageinstall.sh -v 1.7.0.2 -n testinstall -x Comfirm_AlphaMail
+    IMPORTANT: This installation will:
+    * Remove all files under the directory '/var/www/magento_testinstall'.
+    * Drop/create the database 'magento_deploy_testinstall'.
+    Are you really sure that you want to continue y/n [n]? y
+    
+    * Downloading Magento version 1.7.0.2 (magento-1.7.0.2.tar.gz)...
+    * Unpacking and preparing to install Magento to directory /var/www/magento_testinstall/...
+    * Recreating database magento_deploy_testinstall...
+    * Installing Magento...
+    * Installing extension Comfirm_AlphaMail...
+    * Installation successfully completed. Access site at: http://localhost/magento_testinstall/
 
   License (MIT)
     
