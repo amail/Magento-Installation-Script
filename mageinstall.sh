@@ -177,7 +177,7 @@ fi
 # Setup directories and paths
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CACHE_DIR=$CURRENT_DIR/cache
-VERSION_FILE_NAME=magento-$MAG_VERSION.tar.gz
+VERSION_FILE_NAME=$MAG_VERSION.tar.gz
 mkdir -p $CACHE_DIR/
 
 # Render name variables with the name variable
@@ -212,7 +212,7 @@ fi
 if [ ! -f $CACHE_DIR/$VERSION_FILE_NAME ];
 then
     # Build the path to the magento archive
-    version_file_url=http://www.magentocommerce.com/downloads/assets/$MAG_VERSION/$VERSION_FILE_NAME
+    version_file_url=https://github.com/OpenMage/magento-mirror/archive/$VERSION_FILE_NAME
 
     # Try and download the archive
     printf "* Downloading Magento version $MAG_VERSION ($VERSION_FILE_NAME)...\n"
