@@ -235,14 +235,27 @@ fi
 rm -R $WWW_PATH 2> /dev/null
 mkdir -p $WWW_PATH
 
+# unzip while stripping the first dir from the filepath
+unzip-strip() (
+    local zip=$1
+    local dest=${2:-.}
+    local temp=$(mktemp -d) && unzip -d "$temp" "$zip" && mkdir -p "$dest" &&
+    shopt -s dotglob && local f=("$temp"/*) &&
+    if (( ${#f[@]} == 1 )) && [[ -d "${f[0]}" ]] ; then
+        mv "$temp"/*/* "$dest"
+    else
+        mv "$temp"/* "$dest"
+    fi && rmdir "$temp"/* "$temp"
+)
+
 # Extract files to target directory
 echo "* Unpacking and preparing to install Magento to directory $WWW_PATH/..."
 if [[ "$VERSION_FILE_NAME" == *.zip ]]; then
     cd $WWW_PATH
-    unzip $CACHE_DIR/$VERSION_FILE_NAME 2> /dev/null
+    unzip-strip $CACHE_DIR/$VERSION_FILE_NAME 2> /dev/null
     cd $CURRENT_DIR
 else
-    tar -zxf $CACHE_DIR/$VERSION_FILE_NAME -C $WWW_PATH/ 2> /dev/null
+    tar --strip-components=1 -zxf $CACHE_DIR/$VERSION_FILE_NAME -C $WWW_PATH/ 2> /dev/null
 fi
 
 # Move files from extracted directory /magento/ to target directory
